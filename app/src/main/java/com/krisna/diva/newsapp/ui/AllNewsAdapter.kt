@@ -2,8 +2,8 @@ package com.krisna.diva.newsapp.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.krisna.diva.newsapp.R
@@ -11,7 +11,7 @@ import com.krisna.diva.newsapp.data.remote.response.ArticlesItem
 import com.krisna.diva.newsapp.databinding.ItemAllNewsBinding
 import com.krisna.diva.newsapp.utils.DateFormatter
 
-class AllNewsAdapter : ListAdapter<ArticlesItem, AllNewsAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class AllNewsAdapter : PagingDataAdapter<ArticlesItem, AllNewsAdapter.MyViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemAllNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
@@ -19,7 +19,9 @@ class AllNewsAdapter : ListAdapter<ArticlesItem, AllNewsAdapter.MyViewHolder>(DI
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val news = getItem(position)
-        holder.bind(news)
+        if (news != null) {
+            holder.bind(news)
+        }
     }
 
     class MyViewHolder(private val binding: ItemAllNewsBinding) :
@@ -34,7 +36,8 @@ class AllNewsAdapter : ListAdapter<ArticlesItem, AllNewsAdapter.MyViewHolder>(DI
                         .load(article.urlToImage)
                         .into(ivAllPhoto)
                 } else {
-                    ivAllPhoto.setImageResource(R.drawable.no_image)                }
+                    ivAllPhoto.setImageResource(R.drawable.no_image)
+                }
             }
         }
     }
