@@ -17,7 +17,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "BASE_URL", "\"https://newsapi.org/\"")
-        buildConfigField("String", "API_KEY", "\"37b70e0d9d2c4e71b9afe60b080d7071\"")
+        buildConfigField("String", "API_KEY", "\"YOUR_API_KEY\"")
     }
 
     buildTypes {
@@ -72,6 +72,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation("androidx.core:core-splashscreen:1.0.1")
-    implementation("androidx.paging:paging-runtime-ktx:3.1.0")
+    // Splash Screen
+    implementation(libs.core.splashscreen)
+
+    // Paging 3
+    implementation(libs.paging.runtime.ktx)
 }

@@ -1,4 +1,4 @@
-package com.krisna.diva.newsapp.data
+package com.krisna.diva.newsapp.data.repository
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

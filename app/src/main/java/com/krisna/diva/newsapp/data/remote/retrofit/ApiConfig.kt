@@ -10,23 +10,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiConfig {
     companion object {
         fun getApiService(): ApiService {
-            val loggingInterceptor = if (BuildConfig.DEBUG) {
-                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-            } else {
-                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
-            }
+            val loggingInterceptor = HttpLoggingInterceptor().setLevel(
+                if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+            )
 
             val apiKeyInterceptor = Interceptor { chain ->
                 val originalRequest = chain.request()
-                val originalUrl = originalRequest.url
-
-                val url = originalUrl.newBuilder()
+                val url = originalRequest.url.newBuilder()
                     .addQueryParameter("apiKey", BuildConfig.API_KEY)
                     .build()
 
-                val requestBuilder = originalRequest.newBuilder().url(url)
-                val request = requestBuilder.build()
-                return@Interceptor chain.proceed(request)
+                chain.proceed(originalRequest.newBuilder().url(url).build())
             }
 
             val client = OkHttpClient.Builder()
@@ -34,13 +28,12 @@ class ApiConfig {
                 .addInterceptor(apiKeyInterceptor)
                 .build()
 
-            val retrofit = Retrofit.Builder()
+            return Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
-
-            return retrofit.create(ApiService::class.java)
+                .create(ApiService::class.java)
         }
     }
 }

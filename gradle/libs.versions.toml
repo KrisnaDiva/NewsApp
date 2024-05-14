@@ -16,6 +16,8 @@ converterGson = "2.9.0"
 loggingInterceptor = "4.11.0"
 glide = "4.16.0"
 koinAndroid = "3.2.0"
+coreSplashscreen = "1.0.1"
+pagingRuntimeKtx = "3.2.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +36,8 @@ converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", ve
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koinAndroid" }
+core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "coreSplashscreen" }
+paging-runtime-ktx = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "pagingRuntimeKtx" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

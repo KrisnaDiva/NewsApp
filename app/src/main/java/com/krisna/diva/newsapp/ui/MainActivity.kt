@@ -9,11 +9,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.krisna.diva.newsapp.R
-import com.krisna.diva.newsapp.data.LoadingStateAdapter
 import com.krisna.diva.newsapp.databinding.ActivityMainBinding
-import com.krisna.diva.newsapp.data.Result
-import com.krisna.diva.newsapp.utils.showLoading
-import com.krisna.diva.newsapp.utils.showToast
+import com.krisna.diva.newsapp.ui.adapter.AllNewsAdapter
+import com.krisna.diva.newsapp.ui.adapter.HeadlineNewsAdapter
+import com.krisna.diva.newsapp.ui.adapter.LoadingStateAdapter
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -24,7 +23,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
-
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()

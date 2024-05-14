@@ -1,4 +1,4 @@
-package com.krisna.diva.newsapp.data
+package com.krisna.diva.newsapp.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.paging.Pager

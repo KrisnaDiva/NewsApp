@@ -1,4 +1,4 @@
-package com.krisna.diva.newsapp.data
+package com.krisna.diva.newsapp.data.repository
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -6,11 +6,9 @@ import com.krisna.diva.newsapp.data.remote.response.ArticlesItem
 import com.krisna.diva.newsapp.data.remote.retrofit.ApiService
 
 class AllNewsPagingSource(private val apiService: ApiService) : PagingSource<Int, ArticlesItem>() {
-    private companion object {
-        const val INITIAL_PAGE_INDEX = 1
-    }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ArticlesItem> {
+
         return try {
             val position = params.key ?: INITIAL_PAGE_INDEX
             val response = apiService.getAllNews()
@@ -32,4 +30,7 @@ class AllNewsPagingSource(private val apiService: ApiService) : PagingSource<Int
         }
     }
 
+    private companion object {
+        const val INITIAL_PAGE_INDEX = 1
+    }
 }

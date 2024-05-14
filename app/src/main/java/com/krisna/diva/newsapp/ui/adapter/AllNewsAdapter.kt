@@ -1,4 +1,4 @@
-package com.krisna.diva.newsapp.ui
+package com.krisna.diva.newsapp.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
